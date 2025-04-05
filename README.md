@@ -136,6 +136,12 @@ python eval.py --metadata SpatialLM-Testset/test.csv --gt_dir SpatialLM-Testset/
 
 We provide an example of how to use our model to estimate scene layout starting from a RGB video with the newly released [SLAM3R](https://github.com/PKU-VCL-3DV/SLAM3R) in [EXAMPLE.md](EXAMPLE.md). These steps work for MASt3R-SLAM, and other reconstruction methods as well.
 
+### iPhone/iPad Pro Custom Data
+
+If you have an Pro model iPhone or iPad, I suggest downloading [Sitescape](https://apps.apple.com/us/app/sitescape-lidar-scanner-cad/id1524700432) for quick point cloud generation.
+
+Note that the point cloud generated is Y-up so you will need to do a 90 degree X axis rotation to re-orient the data. Then, you will need to align the walls to the X/Y axis.
+
 ## SpatialLM Testset
 
 We provide a test set of 107 preprocessed point clouds, reconstructed from RGB videos using [MASt3R-SLAM](https://github.com/rmurai0610/MASt3R-SLAM). SpatialLM-Testset is quite challenging compared to prior clean RGBD scans datasets due to the noises and occlusions in the point clouds reconstructed from monocular RGB videos.
