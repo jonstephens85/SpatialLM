@@ -22,6 +22,14 @@
     src="https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-SpatialLM-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/></a>
 </div>
 
+## Read first
+__This is a forked Windows Installation Tutorial and the main codes will not be updated__
+This forked GitHub project is intented for folks who have little to know command-line knowledge and want to install SpatialLM and run inference on their own datasets. 
+
+The section below is from the original GitHub page. Jump down to [Installation](#installation) to get started. <br>
+<br>
+<br>
+
 ## Introduction
 
 SpatialLM is a 3D large language model designed to process 3D point cloud data and generate structured 3D scene understanding outputs. These outputs include architectural elements like walls, doors, windows, and oriented object bounding boxes with their semantic categories. Unlike previous methods that require specialized equipment for data collection, SpatialLM can handle point clouds from diverse sources such as monocular video sequences, RGBD images, and LiDAR sensors. This multimodal architecture effectively bridges the gap between unstructured 3D geometric data and structured 3D representations, offering high-level semantic understanding. It enhances spatial reasoning capabilities for applications in embodied robotics, autonomous navigation, and other complex 3D scene analysis tasks.
@@ -42,15 +50,21 @@ SpatialLM is a 3D large language model designed to process 3D point cloud data a
 
 </div>
 
-## Usage
-
-### Installation
+## Installation
 
 Tested with the following environment:
 
 - Python 3.11
 - Pytorch 2.4.1
 - CUDA Version 12.4
+
+**Notes on Windows Usage:** Due to torchsparse in the install directions, this project will almost certainly run into issues with installation. However, running the project via WSL2 works without issue. If you are new to WSL2, it's basically installing Linux onto your system and you are able to access it via command prompt.
+
+### Setting up WSL2
+
+To install WSL2, I found this video to always work for me: [Install WSL2 on Windows 11 with NVIDIA CUDA 11.8](https://www.youtube.com/watch?v=1HzYU2_t3yc). Please note that this video is for CUDA Toolkit 11.8. You will need to download and install 12.4 or higher. Just watch out when he is writing 11.8 to the linux path that you type in 12.4 (or whatever version you are installing).
+
+### Installing SpatialLM
 
 ```bash
 # clone the repository
@@ -60,7 +74,8 @@ cd SpatialLM
 # create a conda environment with cuda 12.4
 conda create -n spatiallm python=3.11
 conda activate spatiallm
-conda install -y nvidia/label/cuda-12.4.0::cuda-toolkit conda-forge::sparsehash
+conda install -y -c nvidia/label/cuda-12.4.0 cuda-toolkit
+conda install -y -c conda-forge sparsehash
 
 # Install dependencies with poetry
 pip install poetry && poetry config virtualenvs.create false --local
@@ -68,7 +83,7 @@ poetry install
 poe install-torchsparse # Building wheel for torchsparse will take a while
 ```
 
-### Inference
+## Inference
 
 In the current version of SpatialLM, input point clouds are considered axis-aligned where the z-axis is the up axis. This orientation is crucial for maintaining consistency in spatial understanding and scene interpretation across different datasets and applications.
 Example preprocessed point clouds, reconstructed from RGB videos using [MASt3R-SLAM](https://github.com/rmurai0610/MASt3R-SLAM), are available in [SpatialLM-Testset](#spatiallm-testset).
