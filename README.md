@@ -140,7 +140,7 @@ We provide an example of how to use our model to estimate scene layout starting 
 
 If you have an Pro model iPhone or iPad, I suggest downloading [Sitescape](https://apps.apple.com/us/app/sitescape-lidar-scanner-cad/id1524700432) for quick point cloud generation.
 
-Note that the point cloud generated is Y-up so you will need to do a 90 degree X axis rotation to re-orient the data. Then, you will need to align the walls to the X/Y axis.
+Note that the point cloud generated is Y-up so you will need to do a 90 degree X axis rotation to re-orient the data. Then, you will need to align the walls to the X/Y axis. I created a video on how to do this! [Watch it here](https://youtu.be/5OrJ1QSFTYM).
 
 ## SpatialLM Testset
 
